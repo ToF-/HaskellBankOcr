@@ -21,5 +21,16 @@ convert ss         =
 
 checksum :: String -> Bool
 checksum = (==0) . (`mod` 11) . sum . zipWith (*) [9,8..1] . map digitToInt 
-    
+
+process :: [String] -> [String]
+process [] = []
+process (l:l':l'':ls) = processOCR [l,l',l''] : process ls
+    where processOCR :: [String] -> String
+          processOCR ss = account ++ suffixes account
+            where account = convert ss
+                  suffixes a | elem '?' a = " ILL"
+                             | not (checksum a) = " ERR"
+                             | otherwise = ""
+
+
 
