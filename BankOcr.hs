@@ -31,6 +31,7 @@ process (l:l':l'':ls) = processOCR [l,l',l''] : process ls
                   suffixes a | elem '?' a = " ILL"
                              | not (checksum a) = " ERR"
                              | otherwise = ""
+process _ = []
 
 
 
