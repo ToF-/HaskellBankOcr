@@ -1,0 +1,2 @@
+# HaskellBankOcr
+Bank OCR kata
